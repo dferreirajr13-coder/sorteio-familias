@@ -7,7 +7,7 @@ page_icon="🎉",
 layout="centered"
 )
  
-df = pd.read_excel("RELAÇÃO SOMENTE COM OS NOMES.xlsx")
+df = pd.read_excel("FAMILIAS.xlsx")
 df = df.dropna(how="all")
  
 col1, col2 = st.columns(2)
