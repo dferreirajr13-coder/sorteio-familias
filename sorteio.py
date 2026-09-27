@@ -8,7 +8,6 @@ layout="centered"
 )
  
 df = pd.read_excel("RELAÇÃO SOMENTE COM OS NOMES.xlsx")
- 
 df = df.dropna(how="all")
  
 col1, col2 = st.columns(2)
@@ -26,7 +25,7 @@ qtd = st.selectbox(
 [2, 3]
 )
  
-if st.button("SORTear"):
+if st.button("SORTEAR"):
  
 sorteados = df.sample(n=qtd)
  
@@ -34,9 +33,15 @@ st.success("Famílias sorteadas")
  
 for _, row in sorteados.iterrows():
  
-nome = str(row.iloc[1]) if len(row) > 1 else ""
+if len(row) > 1:
+nome = str(row.iloc[1])
+else:
+nome = ""
  
-endereco = str(row.iloc[2]) if len(row) > 2 else ""
+if len(row) > 2:
+endereco = str(row.iloc[2])
+else:
+endereco = ""
  
 st.markdown(
 f"""
