@@ -7,13 +7,10 @@ page_icon="🎉",
 layout="centered"
 )
  
-# Carregar planilha
-df = pd.read_excel("familias.xlsx")
+df = pd.read_excel("RELAÇÃO SOMENTE COM OS NOMES.xlsx")
  
-# Remover linhas vazias
 df = df.dropna(how="all")
  
-# Logos
 col1, col2 = st.columns(2)
  
 with col1:
@@ -25,40 +22,33 @@ st.image("logo_igreja.png", width=150)
 st.title("🎉 Sorteio de Famílias")
  
 qtd = st.selectbox(
-"Quantidade de famílias:",
+"Quantidade de famílias a sortear",
 [2, 3]
 )
  
-if st.button("SORTEAR"):
+if st.button("SORTear"):
  
 sorteados = df.sample(n=qtd)
  
-st.success("Famílias Sorteadas")
+st.success("Famílias sorteadas")
  
 for _, row in sorteados.iterrows():
  
 nome = str(row.iloc[1]) if len(row) > 1 else ""
  
-endereco = ""
-if len(row) > 2:
-endereco = str(row.iloc[2])
+endereco = str(row.iloc[2]) if len(row) > 2 else ""
  
 st.markdown(
 f"""
 <div style="
-background:#f77f00;
+background-color:#f77f00;
 padding:20px;
 margin:10px;
 border-radius:15px;
 text-align:center;
-color:white;
-font-size:24px;
-font-weight:bold;
-">
-{nome}<br>
-<span style="font-size:16px;">
-{endereco}
-</span>
+color:white;">
+<h2>{nome}</h2>
+<p>{endereco}</p>
 </div>
 """,
 unsafe_allow_html=True
