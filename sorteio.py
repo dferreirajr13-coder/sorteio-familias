@@ -5,7 +5,7 @@ import pandas as pd
 st.set_page_config(page_title="Sorteio de Famílias", page_icon="🎉", layout="centered")
 
 # Carregar a planilha
-df = pd.read_excel("RELAÇÃO SOMENTE COM OS NOMES.xlsx")
+df = pd.read_excel("FAMILIAS.xlsx")
 
 # Remover linhas sem informação
 df = df.dropna()  # remove linhas totalmente vazias
