@@ -1,0 +1,28 @@
+import streamlit as st
+import pandas as pd
+import random
+
+# Carregar a planilha
+df = pd.read_excel("RELAÇÃO SOMENTE COM OS NOMES.xlsx")
+
+# Configuração da página
+st.set_page_config(page_title="Sorteio de Famílias", page_icon="🎉")
+
+# Logos
+col1, col2 = st.columns([1,1])
+with col1:
+    st.image("logo_ministerio.png", width=150)  # logo do Ministério Família
+with col2:
+    st.image("logo_igreja.png", width=150)      # logo da Igreja de Deus no Brasil
+
+st.title("🎉 Sorteio de Famílias")
+
+# Escolher quantidade
+qtd = st.radio("Quantas famílias deseja sortear?", [2,3])
+
+# Botão para sortear
+if st.button("Sortear"):
+    sorteados = df.sample(n=qtd)
+    st.success("Famílias sorteadas:")
+    for i, row in sorteados.iterrows():
+        st.write(f"- {row[1]} ({row[2]})")
